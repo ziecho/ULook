@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzT-JA-mOm">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PzT-JA-mOm">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,18 +20,27 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0WM-rL-0cg">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="oOW-Kf-1x9"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Uo1-tK-hQv"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imI-Zg-dLk">
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem title="UIToolBar" id="hHY-2X-gBW"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0WM-rL-0cg" secondAttribute="bottom" id="H5g-eg-Ome"/>
+                            <constraint firstItem="imI-Zg-dLk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="J2Y-WM-hd0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0WM-rL-0cg" secondAttribute="trailing" id="KvS-5U-b9Y"/>
                             <constraint firstItem="0WM-rL-0cg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X4b-QJ-r3r"/>
+                            <constraint firstItem="imI-Zg-dLk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dCc-MR-AVd"/>
+                            <constraint firstItem="imI-Zg-dLk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ehX-0w-89J"/>
                             <constraint firstItem="0WM-rL-0cg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w0m-Ig-i7d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -37,6 +48,7 @@
                     <navigationItem key="navigationItem" id="wVZ-em-qyu"/>
                     <connections>
                         <outlet property="tableView" destination="0WM-rL-0cg" id="CPo-ox-Osh"/>
+                        <outlet property="toolBar" destination="imI-Zg-dLk" id="SKK-qS-WDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,11 +90,11 @@
             </objects>
             <point key="canvasLocation" x="1952" y="846"/>
         </scene>
-        <!--Item-->
+        <!--coming soon-->
         <scene sceneID="yry-Fl-KRr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1G0-oS-xR5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="pBS-JO-4CV"/>
+                    <tabBarItem key="tabBarItem" title="coming soon" id="pBS-JO-4CV"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TSL-eM-RVw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

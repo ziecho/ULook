@@ -16,6 +16,9 @@
 
 @property(nonatomic, assign) CGRect previousBounds;
 
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+
+
 @end
 
 @implementation ViewController
@@ -57,6 +60,10 @@
         };
         assist;
     })];
+    
+    // ToolBar
+    
+    [self.toolBar ul_addAssist:[ULAssist assistWithDirection:ULAssistDirectionVertical]];
     
     // Window width
     [[UIApplication sharedApplication].delegate.window ul_addAssist:[ULAssist assistWithDirection:ULAssistDirectionVertical color:UIColor.blueColor locationPercent:0.15]];
