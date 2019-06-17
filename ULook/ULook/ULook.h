@@ -38,6 +38,10 @@ typedef NS_ENUM(NSInteger, ULAssistDirection) {
 
 - (void)ul_addAssist:(ULAssist *)assist;
 
+- (void)ul_removeAssist:(ULAssist *)assist;
+
+- (void)ul_removeAllAssists;
+
 @end
 
 NS_ASSUME_NONNULL_END

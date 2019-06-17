@@ -23,10 +23,24 @@
 
 @implementation ViewController
 
+- (void)hendleHideOrShowTabbar {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.hidesBottomBarWhenPushed = !self.tabBarController.tabBar.hidden;
+    [self.navigationController setViewControllers:@[vc] animated:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    [self.navigationController.navigationBar ul_removeAllAssists];
+        [self.tabBarController.tabBar ul_removeAllAssists];
+//    [@[self.navigationController.navigationBar, self.tabBarController.tabBar] makeObjectsPerformSelector:@selector(ul_removeAllAssists)];
+    
     self.title = @"ULook";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"显示/隐藏 Tabbar" style:UIBarButtonItemStylePlain target:self action:@selector(hendleHideOrShowTabbar)];
     
     self.tableView.tableFooterView = [UIView new];
     
@@ -95,6 +109,7 @@
          // Tabbar Height (Including SafeArea)
         [self.tabBarController.tabBar ul_addAssist:({
             ULAssist *assist = [ULAssist assistWithDirection:ULAssistDirectionVertical];
+            assist.color = UIColor.purpleColor;
             assist.locationPercent = 0.6;
             assist.customLength = ^CGFloat(__kindof UIView * _Nonnull view) {
                 return CGRectGetHeight(view.bounds) - view.window.safeAreaInsets.bottom;

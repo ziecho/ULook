@@ -50,6 +50,12 @@ flat(CGFloat floatValue) {
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+        
+        ExtendImplementationOfVoidMethodWithoutArguments([UINavigationBar class], @selector(layoutSubviews), ^(UIView *selfObject) {
+            [selfObject ul_layoutAssists];
+        });
+        
+        
         ExtendImplementationOfVoidMethodWithoutArguments([UIView class], @selector(layoutSubviews), ^(UIView *selfObject) {
             [selfObject ul_layoutAssists];
         });
@@ -171,7 +177,7 @@ flat(CGFloat floatValue) {
     CGFloat beginPoint = self.assist.customBeginPoint ? self.assist.customBeginPoint(self) : 0;
     CGFloat length = 0;
     if (self.assist.customLength) {
-        length = self.assist.customLength(self);
+        length = self.assist.customLength(self.superview);
     } else {
         length = self.assist.direction == ULAssistDirectionVertical ? CGRectGetHeight(self.bounds) - beginPoint : CGRectGetWidth(self.bounds) - beginPoint;
     }

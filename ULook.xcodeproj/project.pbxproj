@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08099D9122B7D395004BC068 /* UIWindow+ULook.m in Sources */ = {isa = PBXBuildFile; fileRef = 08099D9022B7D395004BC068 /* UIWindow+ULook.m */; };
 		08813FD722B739AC00247B67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 08813FD622B739AC00247B67 /* AppDelegate.m */; };
 		08813FDA22B739AC00247B67 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08813FD922B739AC00247B67 /* ViewController.m */; };
 		08813FDD22B739AC00247B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08813FDB22B739AC00247B67 /* Main.storyboard */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08099D8F22B7D395004BC068 /* UIWindow+ULook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ULook.h"; sourceTree = "<group>"; };
+		08099D9022B7D395004BC068 /* UIWindow+ULook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ULook.m"; sourceTree = "<group>"; };
 		08813FD222B739AC00247B67 /* ULook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ULook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08813FD522B739AC00247B67 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		08813FD622B739AC00247B67 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 		08813FEF22B73AB500247B67 /* ULook */ = {
 			isa = PBXGroup;
 			children = (
+				08099D8F22B7D395004BC068 /* UIWindow+ULook.h */,
+				08099D9022B7D395004BC068 /* UIWindow+ULook.m */,
 				08813FF022B73B0B00247B67 /* ULook.h */,
 				08813FF122B73B0B00247B67 /* ULook.m */,
 			);
@@ -172,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08099D9122B7D395004BC068 /* UIWindow+ULook.m in Sources */,
 				08813FEE22B73AAD00247B67 /* QMUIRuntime.m in Sources */,
 				08813FDA22B739AC00247B67 /* ViewController.m in Sources */,
 				0881400022B7AFB000247B67 /* ULUtils.m in Sources */,
