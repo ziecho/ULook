@@ -154,13 +154,13 @@
             break;
         }
         case 2: {
-            cell.textLabel.text = @"    NavigationBar Height    ";
+            cell.textLabel.text = @"    StatusBar Height    ";
             cell.detailTextLabel.text = @([[UIApplication sharedApplication].keyWindow convertPoint:self.navigationController.navigationBar.frame.origin fromView:self.navigationController.navigationBar.superview].y).stringValue;
             cell.textLabel.layer.backgroundColor = UIColor.orangeColor.CGColor;
             break;
         }
         case 3: {
-            cell.textLabel.text = @"    StatusBar Height    ";
+            cell.textLabel.text = @"    NavigationBar Height    ";
             cell.detailTextLabel.text = @(self.navigationController.navigationBar.frame.size.height).stringValue;
             cell.textLabel.layer.backgroundColor = UIColor.orangeColor.CGColor;
             break;
