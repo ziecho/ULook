@@ -120,7 +120,7 @@
     switch (indexPath.row) {
         case 0: {
             cell.textLabel.text = @"    Device Info    ";
-            cell.detailTextLabel.text = [ULUtils deviceModelName];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@ %@", ULUtils .deviceModelName, UIDevice.currentDevice.systemName, UIDevice.currentDevice.systemVersion];
             cell.textLabel.layer.backgroundColor = UIColor.blueColor.CGColor;
             break;
         }
