@@ -4,6 +4,7 @@
 ## 控件规则
 这里整理下系统常见 UI 控件在各个系统、设备下的高度规则
 
+```
 **Regular & Compact**
 目前屏幕宽度为 414 的手机，比如 iPhone 8 Plus、iPhone XR、iPhone XS Max，横屏下时，**标准模式**的宽度为 Regular，**放大模式**为 Compact。
 宽度小于 414 的手机，比如 iPhone SE、 iPhone 8、iPhone X ，横屏下宽度始终为 Compact。
@@ -39,6 +40,7 @@ iPad  iOS >=12 ? 50 : 44
 全面屏 iPhone 横屏   (Regular 44 or Compact 32) + safeAreaBottom
 非全面屏  iPad  iOS >=12 ? 50 : 44
 全面屏     iPad   50 + safeAreaBottom = 70
+```
 
 
 
