@@ -15,7 +15,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         // https://github.com/SwiftKickMobile/SwiftMessages/issues/142#issuecomment-386327785
-        if (UIDevice.currentDevice.systemVersion.doubleValue < 10.0) {
+        if (UIDevice.currentDevice.systemVersion.doubleValue < 11.0) {
             Method method = class_getInstanceMethod(self, NSSelectorFromString(@"safeAreaInsets_fix"));
             IMP imp = method_getImplementation(method);
             class_addMethod(self, NSSelectorFromString(@"safeAreaInsets"), imp, method_getTypeEncoding(method));

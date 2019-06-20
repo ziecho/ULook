@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "ULook.h"
-#import "ULUtils.h"
+#import "QMUIHelper.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,12 +16,22 @@
 
 @property(nonatomic, assign) CGRect previousBounds;
 
-@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
+@property(weak, nonatomic) IBOutlet UIToolbar *toolBar;
+
+@property(nonatomic, assign) BOOL shouldHiddenStatusBar;
 
 
 @end
 
 @implementation ViewController
+
+
+NSString * NSStringFromUIUserInterfaceSizeClass(UIUserInterfaceSizeClass sizeClass) {
+    return
+    sizeClass == UIUserInterfaceSizeClassUnspecified ? @"Unspecified" :
+    sizeClass == UIUserInterfaceSizeClassCompact ? @"Compact" :
+    sizeClass == UIUserInterfaceSizeClassRegular ? @"Regular" : nil;
+}
 
 - (void)hendleHideOrShowTabbar {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -30,8 +40,19 @@
     [self.navigationController setViewControllers:@[vc] animated:NO];
 }
 
+- (void)hendleHideOrShowNavigationBar {
+
+    [[UIApplication sharedApplication] setStatusBarHidden:![UIApplication sharedApplication].statusBarHidden withAnimation:UIStatusBarAnimationNone];
+
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return self.shouldHiddenStatusBar;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -40,6 +61,9 @@
 //    [@[self.navigationController.navigationBar, self.tabBarController.tabBar] makeObjectsPerformSelector:@selector(ul_removeAllAssists)];
     
     self.title = @"ULook";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"显示/隐藏 StatusBar" style:UIBarButtonItemStylePlain target:self action:@selector(hendleHideOrShowNavigationBar)];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"显示/隐藏 Tabbar" style:UIBarButtonItemStylePlain target:self action:@selector(hendleHideOrShowTabbar)];
     
     self.tableView.tableFooterView = [UIView new];
@@ -123,9 +147,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (@available(iOS 11.0, *)) {
-        return self.view.window.safeAreaInsets.bottom > 0 ? 7 : 5;
+        return self.view.window.safeAreaInsets.bottom > 0 ? 8 : 6;
     }
-    return 7;
+    return 8;
 }
 
 
@@ -142,7 +166,7 @@
     switch (indexPath.row) {
         case 0: {
             cell.textLabel.text = @"    Device Info    ";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@ %@", ULUtils .deviceModelName, UIDevice.currentDevice.systemName, UIDevice.currentDevice.systemVersion];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@ %@", QMUIHelper .deviceModelName, [UIDevice.currentDevice.systemName stringByReplacingOccurrencesOfString:@"iPhone " withString:@"i"], UIDevice.currentDevice.systemVersion];
             cell.textLabel.layer.backgroundColor = UIColor.blueColor.CGColor;
             break;
         }
@@ -172,17 +196,24 @@
             break;
         }
         case 5: {
-            cell.textLabel.text = @"    Tabbar Height (Including SafeArea)     ";
-            cell.detailTextLabel.text = @(self.tabBarController.tabBar.bounds.size.height).stringValue;
-            cell.textLabel.layer.backgroundColor = UIColor.orangeColor.CGColor;
+            cell.textLabel.text = @"    width SizeClass     ";
+            cell.detailTextLabel.text = NSStringFromUIUserInterfaceSizeClass(self.traitCollection.horizontalSizeClass);
+            cell.textLabel.layer.backgroundColor = UIColor.redColor.CGColor;
             break;
         }
         case 6: {
+            cell.textLabel.text = @"    height SizeClass     ";
+            cell.detailTextLabel.text = NSStringFromUIUserInterfaceSizeClass(self.traitCollection.verticalSizeClass);
+            cell.textLabel.layer.backgroundColor = UIColor.redColor.CGColor;
+            break;
+        }
+        case 7: {
             cell.textLabel.text = @"    Window safeAreaInsets     ";
             cell.detailTextLabel.text = NSStringFromUIEdgeInsets(self.view.window.safeAreaInsets);
             cell.textLabel.layer.backgroundColor = UIColor.redColor.CGColor;
             break;
         }
+
     }
     
     
@@ -193,12 +224,44 @@
     return cell;
 }
 
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    if (!self.navigationController) return;
+    
+    CGFloat navigationBarHeight = self.navigationController.navigationBar.frame.size.height;
+    if (navigationBarHeight != NavigationBarHeight) {
+        NSLog(@"❌ NavigationBarHeight QMUI %d \n NavigationBarHeight %f", NavigationBarHeight, navigationBarHeight);
+    } else {
+        NSLog(@"✅ NavigationBarHeight %d", NavigationBarHeight);
+    }
+    if (self.tabBarController.tabBar.hidden) {
+        CGFloat toolBarHeight = self.toolBar.bounds.size.height + SafeAreaInsetsConstantForDeviceWithNotch.bottom;
+        if (toolBarHeight != ToolBarHeight) {
+            NSLog(@"❌ ToolBarHeight QMUI %f \n ToolBarHeight %f", ToolBarHeight, toolBarHeight);
+        } else {
+            NSLog(@"✅ ToolBarHeight %f", ToolBarHeight);
+        }
+    } else {
+        CGFloat tabBarHeight = self.tabBarController.tabBar.bounds.size.height;
+        if (tabBarHeight != TabBarHeight) {
+            NSLog(@"❌ TabBarHeight QMUI %f \n TabBarHeight %f", TabBarHeight, tabBarHeight);
+        } else {
+            NSLog(@"✅ TabBarHeight %f", TabBarHeight);
+        }
+    }
+}
+
+
 - (void)viewWillLayoutSubviews {
+    
     [super viewWillLayoutSubviews];
     
     if (!CGRectEqualToRect(self.previousBounds, self.view.bounds)) {
         [self.tableView reloadData];
     }
+
 }
 
 
