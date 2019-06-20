@@ -35,7 +35,7 @@ iPad  iOS >=12 ? 50 : 44
 ### TabBarHeight
 非全面屏 iPhone 竖屏    49
 
-非全面屏 iPhone 横屏   49 
+非全面屏 iPhone 横屏   (Regular  49  or Compact  32) 
 
 全面屏 iPhone 竖屏   49   + safeAreaBottom = 83
 
